@@ -9,4 +9,4 @@ by **Sebastián Jardi Estadella**
  	alt = "WebApp ArranqueTESA2 image.">
  	
  ### Keywords
- HTML, JacaScript, CSS.
+ HTML, JacaScript, CSS, VSCodium.
