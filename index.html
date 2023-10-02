@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body { text-align: center; }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sebastian Jardi Estadella">
+    <!--<meta http-equiv = "refresh" content="5; URL=index.html"> -->
+    <title>Control Potencia Arranque TESA2</title>
+  </head>
+  <body>
+      <h1>Previsión Generación Energía Arranque TESA2</h1>
+      <p id="currentTime"></p>
+      <hr>
+      <div id="inputs">
+        <h3>Potencia Nominada Hora Actual.</h3>
+        <label>TESA2:
+        <input id="inptPotNominada" type="number" min="0" max="14" value=4.9> MW
+        </label>
+      </div>
+      <hr>
+      <div id="energiaPotencias">
+        <h3>Energía Generada desde Inicio Hora Actual.</h3>
+        <label>TESA2:
+        <input id="inptEnergia" type="number" min="0" max="14" value=0 onkeydown="intoKeyDown()"> MWh
+        </label>
+        
+        <h3>Potencia Instantanea MGs.</h3>
+        <label>MG1:
+        <input id="inPotMG1" type="number" min="0" max="7" value=0 onkeydown="intoKeyDown()"> MW
+        </label>
+        <label id="potMG1p100" style="font-size: x-large; font-weight: bold;"></label> %
+        <br>
+        <label>MG2:
+        <input id="inPotMG2" type="number" min="0" max="7" value=0 onkeydown="intoKeyDown()"> MW
+        </label>
+        <label id="potMG2p100" style="font-size: x-large; font-weight: bold;"></label> %
+        <br>
+        <label>TESA2:
+        <input id="inPotTESA2" type="number" min="0" max="14" value=0 onkeydown="intoKeyDown()"> MW
+        </label>
+      </div>
+      <hr>
+      <div id="previsio">
+        <h3>Previsión Energía Generada Final Hora Actual.</h3>
+        <p><b>Tiempo Restante: <label id="tempsRest" style="font-size: x-large; font-weight: bold;"></label> min.</b></p>
+        <p><b>Previsión: <label id="resultado" style="font-size: x-large; font-weight: bold;"></label> MWh</b></p>
+        <p><b>Corrección: <label id="correccion" style="font-size: x-large; font-weight: bold;"></label> Potencia</b></p>
+      </div>
+      <hr>
+      <hr>
+      <div>
+        <h3>Convertir % Carga a MW</h3>
+        <label for="inptCarga">Carga:</label>
+        <input id="inptCarga" type="number" min="0" max="100.0" value=0 onkeydown="cargaKeyDown()"> %
+        <label id="potMW" style="font-size: x-large; font-weight: bold;"></label> MW
+      </div>
+      <hr>
+      <hr>
+  </body>
+  <script src="script.js"></script>
+</html>
