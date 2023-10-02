@@ -33,25 +33,25 @@ function calcular(){
   let potMG2 = document.getElementById("inPotMG2").value;
   
   potNominada = parseFloat(potNominada);
-  if (potNominada < 0) { potNominada = 0; document.getElementById("inptPotNominada").value = potNominada; }
+  if (potNominada < 0) { potNominada = 0; document.getElementById("inptPotNominada").value = potNominada.toFixed(2); }
   if (potNominada > POT_TESA2_100x100) { potNominada = POT_TESA2_100x100; document.getElementById("inptPotNominada").value = potNominada;}
   
   energia = parseFloat(energia);
   if (energia < 0) { energia = 0; document.getElementById("inptEnergia").value = energia; }
-  if (energia > POT_TESA2_100x100) { energia = POT_TESA2_100x100; document.getElementById("inptEnergia").value = energia;}
+  if (energia > POT_TESA2_100x100) { energia = POT_TESA2_100x100; document.getElementById("inptEnergia").value = energia.toFixed(2);}
   
   potMG1 = parseFloat(potMG1);
   if (potMG1 < 0) { potMG1 = 0; document.getElementById("inPotMG1").value = potMG1; }
-  if (potMG1 > POT_MG_100x100) { potMG1 = POT_MG_100x100; document.getElementById("inPotMG1").value = potMG1;}
+  if (potMG1 > POT_MG_100x100) { potMG1 = POT_MG_100x100; document.getElementById("inPotMG1").value = potMG1.toFixed(2);}
   document.getElementById("potMG1p100").innerHTML = (potMG1 / POT_MG_100x100 * 100).toFixed(0);
 
   potMG2 = parseFloat(potMG2);
   if (potMG2 < 0) { potMG2 = 0; document.getElementById("inPotMG2").value = potMG2; }
-  if (potMG2 > POT_MG_100x100) { potMG2 = POT_MG_100x100; document.getElementById("inPotMG2").value = potMG2;}
+  if (potMG2 > POT_MG_100x100) { potMG2 = POT_MG_100x100; document.getElementById("inPotMG2").value = potMG2.toFixed(2);}
   document.getElementById("potMG2p100").innerHTML = (potMG2 / POT_MG_100x100 * 100).toFixed(0);
 
   let potTESA2 = potMG1 + potMG2;
-  document.getElementById("inPotTESA2").value = potTESA2;
+  document.getElementById("inPotTESA2").value = potTESA2.toFixed(2);
   
   const fechaHora = new Date();
   //let hora = fechaHora.getHours();
