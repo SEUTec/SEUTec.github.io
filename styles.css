@@ -1,0 +1,27 @@
+/*
+    Cascade StyleSheet
+*/
+
+* {
+    text-align: center;
+}
+
+input {
+    width: 80px;
+    font-size: large;
+}
+
+output {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+button {
+    font-size: x-large;
+}
+
+/*
+label {
+    border: 1px solid red;
+}
+*/
