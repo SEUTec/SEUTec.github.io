@@ -10,7 +10,7 @@ setInterval(function () { showTime(); }, 1000);
 
 // Functions definitions
 function showTime() {
-	document.getElementById('currentTime').innerHTML = new Date().toUTCString();
+	document.getElementById('currentTime').innerHTML = new Date().toLocaleString();
 }
 
 function intoKeyDown(){
