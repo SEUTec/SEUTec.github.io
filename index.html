@@ -6,6 +6,7 @@
     </style>
     <meta charset="UTF-8">
     <meta name="author" content="Sebastian Jardi Estadella">
+    <!-- Para evitar que los input se vean muy pequeños en Smartphones -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- For autorecharge periodically each 5 seconds -->
     <!--<meta http-equiv = "refresh" content="5; URL=index.html"> -->
@@ -25,22 +26,30 @@
       <div id="energiaPotencias">
         <h3>Energía Generada desde Inicio Hora Actual.</h3>
         <label>TESA2:
-        <input id="inptEnergia" type="number" min="0" max="14" value=0 onkeydown="intoKeyDown()"> MWh
+        <input id="inptEnergia" type="number" 
+                min="0" max="14" value=0 
+                step="any" onkeydown="intoKeyDown()"> MWh
         </label>
         
         <h3>Potencia Instantanea MGs.</h3>
         <label>MG1:
-        <input id="inPotMG1" type="number" min="0" max="7" value=0 onkeydown="intoKeyDown()"> MW
+        <input id="inPotMG1" type="number" 
+                min="0" max="7" value=0
+                step="any" onkeydown="intoKeyDown()"> MW
         </label>
         <label id="potMG1p100" style="font-size: x-large; font-weight: bold;"></label> %
         <br>
         <label>MG2:
-        <input id="inPotMG2" type="number" min="0" max="7" value=0 onkeydown="intoKeyDown()"> MW
+        <input id="inPotMG2" type="number" 
+                min="0" max="7" value=0 
+                step="any" onkeydown="intoKeyDown()"> MW
         </label>
         <label id="potMG2p100" style="font-size: x-large; font-weight: bold;"></label> %
         <br>
         <label>TESA2:
-        <input id="inPotTESA2" type="number" min="0" max="14" value=0 onkeydown="intoKeyDown()"> MW
+        <input id="inPotTESA2" type="number" 
+                min="0" max="14" value=0 
+                step="any" onkeydown="intoKeyDown()"> MW
         </label>
       </div>
       <hr>
@@ -55,7 +64,9 @@
       <div>
         <h3>Convertir % Carga a MW</h3>
         <label for="inptCarga">Carga:</label>
-        <input id="inptCarga" type="number" min="0" max="100.0" value=0 onkeydown="cargaKeyDown()"> %
+        <input id="inptCarga" type="number"
+                min="0" max="100.0" value=0
+                step="any" onkeydown="cargaKeyDown()"> %
         <label id="potMW" style="font-size: x-large; font-weight: bold;"></label> MW
       </div>
       <hr>
