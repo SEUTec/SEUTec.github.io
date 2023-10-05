@@ -37,27 +37,28 @@
                 min="0" max="7" value=0
                 step="any" onkeydown="intoKeyDown()"> MW
         </label>
-        <label id="potMG1p100" style="font-size: x-large; font-weight: bold;"></label> %
+        <output id="potMG1p100" style="font-size: x-large; font-weight: bold;">0.0</output> %
         <br>
         <label>MG2:
         <input id="inPotMG2" type="number" 
                 min="0" max="7" value=0 
                 step="any" onkeydown="intoKeyDown()"> MW
         </label>
-        <label id="potMG2p100" style="font-size: x-large; font-weight: bold;"></label> %
+        <output id="potMG2p100" style="font-size: x-large; font-weight: bold;">0.0</output> %
         <br>
         <label>TESA2:
         <input id="inPotTESA2" type="number" 
                 min="0" max="14" value=0 
                 step="any" onkeydown="intoKeyDown()"> MW
         </label>
+        <button onclick="calcular()">Calcular</button>
       </div>
       <hr>
       <div id="previsio">
         <h3>Previsión Energía Generada Final Hora Actual.</h3>
-        <p><b>Tiempo Restante: <label id="tempsRest" style="font-size: x-large; font-weight: bold;"></label> min.</b></p>
-        <p><b>Previsión: <label id="resultado" style="font-size: x-large; font-weight: bold;"></label> MWh</b></p>
-        <p><b>Corrección: <label id="correccion" style="font-size: x-large; font-weight: bold;"></label> Potencia</b></p>
+        <p><b>Tiempo Restante: <output id="tempsRest" style="font-size: x-large; font-weight: bold;">0.0</output> min.</b></p>
+        <p><b>Previsión: <output id="resultado" style="font-size: x-large; font-weight: bold;">0.0</output> MWh</b></p>
+        <p><b>Corrección: <output id="correccion" style="font-size: x-large; font-weight: bold;">0.0</output> Potencia</b></p>
       </div>
       <hr>
       <hr>
@@ -67,7 +68,7 @@
         <input id="inptCarga" type="number"
                 min="0" max="100.0" value=0
                 step="any" onkeydown="cargaKeyDown()"> %
-        <label id="potMW" style="font-size: x-large; font-weight: bold;"></label> MW
+        <output id="potMW" style="font-size: x-large; font-weight: bold;">0.0</output> MW
       </div>
       <hr>
       <hr>
