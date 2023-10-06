@@ -17,14 +17,14 @@
         <legend>Potencia Nominada Hora</legend>
         <label>TESA2:
         <input id="inptPotNominada" type="number" min="0" max="14"
-                step="0.1" value=4.9> MW
+                step="0.1" value=4.9 onkeydown="intoKeyDown()" onchange="calcular()"> MW
         </label>
       </fieldset>
       <fieldset>
         <legend>Energía Generada desde Inicio Hora</legend>
         <label>TESA2:
         <input id="inptEnergia" type="number" min="0" max="14"
-                value=0 step="0.1" onkeydown="intoKeyDown()"> MWh
+                value=0 step="0.1" onkeydown="intoKeyDown()" onchange="calcular()"> MWh
         </label>
       </fieldset>  
       <fieldset>
@@ -32,14 +32,14 @@
         <label>MG1:
         <input id="inPotMG1" type="number" 
                 min="0" max="7" value=0
-                step="0.1" onkeydown="intoKeyDown()"> MW
+                step="0.1" onkeydown="intoKeyDown()" onchange="calcular()"> MW
         </label>
         <output id="potMG1p100">0.0</output> %
         <br>
         <label>MG2:
         <input id="inPotMG2" type="number" 
                 min="0" max="7" value=0 
-                step="0.1" onkeydown="intoKeyDown()"> MW
+                step="0.1" onkeydown="intoKeyDown()" onchange="calcular()"> MW
         </label>
         <output id="potMG2p100">0.0</output> %
         <br>
