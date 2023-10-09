@@ -7,39 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- For autorecharge periodically each 5 seconds -->
     <!--<meta http-equiv = "refresh" content="5; URL=index.html"> -->
-    <title>Previsión Generación Energía Arranque TESA2</title>
+    <title>Arranque Generadores.</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-      <h2>Previsión Generación Energía Arranque TESA2</h2>
+      <h2>Arranque Motores Generadores.</h2>
       <output id="currentTime"></output>
       <fieldset>
         <legend>Potencia Nominada Hora</legend>
         <label>TESA2:
-        <input id="inptPotNominada" type="number" min="0" max="14"
-                step="0.1" value=4.9 onkeydown="intoKeyDown()" onchange="calcular()"> MW
+        <!-- <input id="inptPotNominada" type="number" min="0" max="14" step="0.1" value=4.9 
+                  onkeydown="intoKeyDown()" onchange="calcular()"> MW -->
+        <input id="inptPotNominada" type="number" min=0 max=14
+                  step=0.1 value=4.9> MW
         </label>
       </fieldset>
       <fieldset>
         <legend>Energía Generada desde Inicio Hora</legend>
         <label>TESA2:
-        <input id="inptEnergia" type="number" min="0" max="14"
-                value=0 step="0.1" onkeydown="intoKeyDown()" onchange="calcular()"> MWh
+        <!-- <input id="inptEnergia" type="number" min="0" max="14"
+                value=0 step="0.1" onkeydown="intoKeyDown()" onchange="calcular()"> MWh -->
+        <input id="inptEnergia" type="number" min=0.0 max=14.0
+                value=0.0 step=0.1> MWh
         </label>
       </fieldset>  
       <fieldset>
         <legend>Potencia Instantanea</legend>
         <label>MG1:
-        <input id="inPotMG1" type="number" 
-                min="0" max="7" value=0
-                step="0.1" onkeydown="intoKeyDown()" onchange="calcular()"> MW
+        <input id="inPotMG1" type="number" min=0.0 max=7.0
+                value=0.0 step=0.1> MW
         </label>
         <output id="potMG1p100">0.0</output> %
         <br>
         <label>MG2:
-        <input id="inPotMG2" type="number" 
-                min="0" max="7" value=0 
-                step="0.1" onkeydown="intoKeyDown()" onchange="calcular()"> MW
+        <!-- <input id="inPotMG2" type="number" min="0" max="7" value=0 
+                step="0.1" onkeydown="intoKeyDown()" onchange="calcular()"> MW -->
+        <input id="inPotMG2" type="number" min=0.0 max=7.0
+                 value=0.0 step=0.1> MW
         </label>
         <output id="potMG2p100">0.0</output> %
         <br>
@@ -47,11 +51,18 @@
         <output id="inPotTESA2">0.0</output> MW
         </label>
       </fieldset>
-      <button onclick="calcular()">Calcular</button>
+      <!-- <button onclick="calcular()">Calcular</button> -->
+      <fieldset>
+        <legend>Tiempos Subida 100%</legend>
+        <label>MG1: <output id="tMG1al100">Indef.</output> min. 
+          <output id="timeOutMG1">Previsión</output></label>
+        <br><label>MG2: <output id="tMG2al100">Indef.</output> min.
+          <output id="timeOutMG2">Previsión</output></label>
+      </fieldset>
       <fieldset>
         <legend>Previsión Energía Generada Final Hora</legend>
         <label>Tiempo Restante: <output id="tempsRest">0.0</output> min.</label>
-        <br><label>Previsión: <output id="resultado">0.0</output> MWh</label>
+        <br><label>Previsión Pot. Cte.: <output id="resultado">0.0</output> MWh</label>
         <br><label>Corrección: <output id="correccion">SUBIR?</output> Potencia</label>
       </fieldset>
       <!-- <hr>
@@ -63,8 +74,8 @@
                 step="0.1" onkeydown="cargaKeyDown()"> %
         <output id="potMW">0.0</output> MW
       </div>
-      <hr>
       <hr> -->
+      <hr>
   </body>
   <script src="script.js"></script>
 </html>
