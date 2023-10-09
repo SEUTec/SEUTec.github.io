@@ -105,9 +105,42 @@ function calcular(){
   //const velSubida = 0.4; //MW/min los 2 motores al mismo tiempo.
   //const velSubida = 0.2; //MW/min 1 solo motor generador
 
+  // Incremento de Carga para llegar al 100% en %
+  let dCMG1 = (100 - potMG1p100);
+  let dCMG2 = (100 - potMG2p100);
+  //console.log("dPMG1: " + dPMG1);
+  //console.log("dPMG2: " + dPMG2);
+
   // Tiempo que van a tardar en hacer la subida
-  let tMG1al100p100 = (100 - potMG1p100) / velSubidaMG;
-  let tMG2al100p100 = (100 - potMG2p100) / velSubidaMG;
+  let tMG1al100p100 = dCMG1 / velSubidaMG;
+  let tMG2al100p100 = dCMG2 / velSubidaMG;
+  //console.log("tMG1al100p100: " + tMG1al100p100);
+  //console.log("tMG2al100p100: " + tMG2al100p100);
+  
+  // Incremento de Potencia para llegar al 100% en MW.
+  let dPMG1MW = dCMG1 * POT_MG_100x100 / 100;
+  let dPMG2MW = dCMG2 * POT_MG_100x100 / 100;
+  //console.log("dPMG1MW: " + dPMG1MW);
+  //console.log("dPMG2MW: " + dPMG2MW);
+
+  // Potencia extra generada durante la subida
+  // al 100 en último momento, hay que considerar el caso
+  // en que no se finaliza la subida al final de la hora
+  // y el caso en que se finaliza la subida antes del final de hora
+  // tiempo en minutos => 60 para convertir a tiempo en horas
+  let potExtrSubidaMG1 = dPMG1MW * tMG1al100p100 / 60.0 / 2.0;
+  let potExtrSubidaMG2 = dPMG2MW * tMG2al100p100 / 60.0 / 2.0;
+  //console.log("potExtrSubidaMG1: " + potExtrSubidaMG1);
+  //console.log("potExtrSubidaMG2: " + potExtrSubidaMG2);
+
+  // Energia generada con la subida a última hora
+  prevFinalTESA2 = energia * minutos / 60.0 +
+    prevGeneraMG1 + prevGeneraMG2 +
+    potExtrSubidaMG1 + potExtrSubidaMG2;
+  //console.log("prevFinalTESA2: " + prevFinalTESA2);
+
+  document.getElementById("resultado100").innerHTML = prevFinalTESA2.toFixed(2);
+  //document.getElementById("correccion100").innerHTML = correccion;  
 
   document.getElementById("tMG1al100").innerHTML = tMG1al100p100.toFixed(1);
   const timeOutMG1 = document.getElementById("timeOutMG1");
@@ -146,8 +179,10 @@ function calcular(){
     timeOutMG2.innerHTML = "Previsión";  
     timeOutMG2.style.color = "black";
   }
+
 }
 
+// Conviente Carga en % a Potencia en MW
 function cargaMW(){
   //alert("cargaMW");
   carga = document.getElementById("inptCarga").value;
