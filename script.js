@@ -2,7 +2,7 @@
   Scripts Previsión Generación Ebergía Arranque TESA2
 */
 
-const POT_TESA2_100x100 = 14;
+const POT_TESA2_100x100 = 13.8;
 const POT_MG_100x100 = POT_TESA2_100x100 / 2;
 
 showTime();  // Para que no tarde 1s en mostrarse la hora
@@ -93,8 +93,11 @@ function calcular(){
   //console.log("correccion: " + correccion);
 
   document.getElementById("tempsRest").innerHTML = minRestantes.toFixed(2);  
-  document.getElementById("resultado").innerHTML = prevFinalTESA2.toFixed(2);
-  document.getElementById("correccion").innerHTML = correccion;  
+  // Si comentem resultado y corrección a pot cte al HTML
+  // tindrem que comentar la seva actualització per a que
+  // s'actualitce la resta de calculs.
+  // document.getElementById("resultado").innerHTML = prevFinalTESA2.toFixed(2);
+  // document.getElementById("correccion").innerHTML = correccion;  
 
   // Tiempo Necesario para Subir desde potencia Actual al 100%
   const p100Subida = 40;  // % de Subida medidoa para referencia
