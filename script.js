@@ -16,16 +16,10 @@ function showTime() {
 	document.getElementById('currentTime').innerHTML = new Date().toLocaleString();
 }
 
-// function intoKeyDown(){
+// function cargaKeyDown(){
 //   //alert("KeyDOwn on Carga: " + event.keyCode);
-//   if (event.keyCode == 13){ calcular(); }
+//   if (event.keyCode == 13){ cargaMW(); }
 // }
-
-function cargaKeyDown(){
-  //alert("KeyDOwn on Carga: " + event.keyCode);
-  if (event.keyCode == 13){ cargaMW(); }
-}
-
 
 // Calcular la previsió d'energia generada al final de l'hora actual
 function calcular(){
@@ -61,37 +55,27 @@ function calcular(){
   document.getElementById("inPotTESA2").value = potTESA2.toFixed(2);
   
   const fechaHora = new Date();
-  //let hora = fechaHora.getHours();
   let minutos = fechaHora.getMinutes();
   let segundos = fechaHora.getSeconds();
-  segundos = segundos / 60;
-  let minRestantes = 60 - minutos;   // Minutos restantes para finalizar hora actual
-  minRestantes = minRestantes - segundos;
-  //console.log("minRestantes: " + minRestantes);
-  
+                  // segundos / 60 Convierte segundos en minutos, 0-60s a 0-1
+  let minRestantes = 60 - minutos - segundos / 60;   // Minutos restantes para finalizar hora actual
+    
   // Cálculo Previsión Energia Generada de Ahora a Final de hora
   // a Potencia Constante, en MWh
   let prevGeneraMG1 = potMG1 * minRestantes / 60;
   let prevGeneraMG2 = potMG2 * minRestantes / 60;
-  //console.log("prevGeneraMG1: " + prevGeneraMG1);
-  //console.log("prevGeneraMG2: " + prevGeneraMG2);
   
   prevFinalTESA2 = energia * minutos / 60 + prevGeneraMG1 + prevGeneraMG2;
-  //console.log("prevFinalTESA2: " + prevFinalTESA2);
-
+  
   let correcion;  // Declarar la variable global, no dentro del if, para poder utilizarla fuera.
   if ( potNominada * 0.95 > prevFinalTESA2  ) { 
     correccion = "SUBIR"; 
-    //alert("SUBIR"); 
-  } else if ( potNominada * 1.05 < prevFinalTESA2 ) { 
+    } else if ( potNominada * 1.05 < prevFinalTESA2 ) { 
     correccion = "BAJAR"; 
-    //alert("BAJAR");
-  } else { 
+    } else { 
     correccion = "MANTENER"; 
-    //alert("MANTENER");
   }
-  //console.log("correccion: " + correccion);
-
+  
   document.getElementById("tempsRest").innerHTML = minRestantes.toFixed(2);  
   // Si comentem resultado y corrección a pot cte al HTML
   // tindrem que comentar la seva actualització per a que
@@ -105,27 +89,18 @@ function calcular(){
   const velSubidaT2 = p100Subida / tmpSubida; // %/min TESA2, los 2 MGs
   const velSubidaMG = velSubidaT2 / 2;        // %/min 1 solo motor generador
   
-  //const velSubida = 0.4; //MW/min los 2 motores al mismo tiempo.
-  //const velSubida = 0.2; //MW/min 1 solo motor generador
-
   // Incremento de Carga para llegar al 100% en %
   let dCMG1 = (100 - potMG1p100);
   let dCMG2 = (100 - potMG2p100);
-  //console.log("dPMG1: " + dPMG1);
-  //console.log("dPMG2: " + dPMG2);
-
+  
   // Tiempo que van a tardar en hacer la subida
   let tMG1al100p100 = dCMG1 / velSubidaMG;
   let tMG2al100p100 = dCMG2 / velSubidaMG;
-  //console.log("tMG1al100p100: " + tMG1al100p100);
-  //console.log("tMG2al100p100: " + tMG2al100p100);
   
   // Incremento de Potencia para llegar al 100% en MW.
   let dPMG1MW = dCMG1 * POT_MG_100x100 / 100;
   let dPMG2MW = dCMG2 * POT_MG_100x100 / 100;
-  //console.log("dPMG1MW: " + dPMG1MW);
-  //console.log("dPMG2MW: " + dPMG2MW);
-
+  
   // Potencia extra generada durante la subida
   // al 100 en último momento, hay que considerar el caso
   // en que no se finaliza la subida al final de la hora
@@ -133,17 +108,13 @@ function calcular(){
   // tiempo en minutos => 60 para convertir a tiempo en horas
   let potExtrSubidaMG1 = dPMG1MW * tMG1al100p100 / 60.0 / 2.0;
   let potExtrSubidaMG2 = dPMG2MW * tMG2al100p100 / 60.0 / 2.0;
-  //console.log("potExtrSubidaMG1: " + potExtrSubidaMG1);
-  //console.log("potExtrSubidaMG2: " + potExtrSubidaMG2);
 
   // Energia generada con la subida a última hora
   prevFinalTESA2 = energia * minutos / 60.0 +
     prevGeneraMG1 + prevGeneraMG2 +
     potExtrSubidaMG1 + potExtrSubidaMG2;
-  //console.log("prevFinalTESA2: " + prevFinalTESA2);
 
   document.getElementById("resultado100").innerHTML = prevFinalTESA2.toFixed(2);
-  //document.getElementById("correccion100").innerHTML = correccion;  
 
   document.getElementById("tMG1al100").innerHTML = tMG1al100p100.toFixed(1);
   const timeOutMG1 = document.getElementById("timeOutMG1");
@@ -184,6 +155,8 @@ function calcular(){
   }
 
 }
+
+
 
 // Conviente Carga en % a Potencia en MW
 function cargaMW(){
