@@ -118,45 +118,31 @@ function calcular(){
 
   document.getElementById("tMG1al100").innerHTML = tMG1al100p100.toFixed(1);
   const timeOutMG1 = document.getElementById("timeOutMG1");
-  if (minRestantes <= tMG1al100p100) {
-    timeOutMG1.innerHTML = "SUBIR 100%";  
-    timeOutMG1.style.color = "red";
-  } else if (minRestantes <= tMG1al100p100 + 0.5) {  // 0.5 min. preaviso
-    timeOutMG1.innerHTML = "SUBIR 100%";  
-    timeOutMG1.style.color = "orange";
-  } else if (minRestantes <= tMG1al100p100 + 1) {   // 1 min preaviso
-    timeOutMG1.innerHTML = "SUBIR 100%";  
-    timeOutMG1.style.color = "black";
-  } else if (minRestantes <= tMG1al100p100 + 1.5) {  // 1.5 min. preaviso
-    timeOutMG1.innerHTML = "subir 100%";  
-    timeOutMG1.style.color = "black";
-  } else {
-    timeOutMG1.innerHTML = "Previsión";  
-    timeOutMG1.style.color = "black";
-  }
+  timeOutMssg(timeOutMG1, minRestantes, tMG1al100p100);
 
   document.getElementById("tMG2al100").innerHTML = tMG2al100p100.toFixed(1);
   const timeOutMG2 = document.getElementById("timeOutMG2");
-  if (minRestantes <= tMG2al100p100) {
-    timeOutMG2.innerHTML = "SUBIR 100%";  
-    timeOutMG2.style.color = "red";
-  } else if (minRestantes <= tMG2al100p100 + 0.5) {
-    timeOutMG2.innerHTML = "SUBIR 100%";  
-    timeOutMG2.style.color = "orange";
-  } else if (minRestantes <= tMG2al100p100 + 1) {
-    timeOutMG2.innerHTML = "SUBIR 100%";  
-    timeOutMG2.style.color = "black";
-  } else if (minRestantes <= tMG2al100p100 + 1.5) {
-    timeOutMG2.innerHTML = "subir 100%";  
-    timeOutMG2.style.color = "black";
-  } else {
-    timeOutMG2.innerHTML = "Previsión";  
-    timeOutMG2.style.color = "black";
-  }
-
+  timeOutMssg(timeOutMG2, minRestantes, tMG2al100p100);
 }
 
-
+function timeOutMssg(timeOutMG, minRestantes, tMGal100p100){
+  if (minRestantes <= tMGal100p100) {
+    timeOutMG.innerHTML = "SUBIR 100%";  
+    timeOutMG.style.color = "red";
+  } else if (minRestantes <= tMGal100p100 + 0.5) {
+    timeOutMG.innerHTML = "SUBIR 100%";  
+    timeOutMG.style.color = "orange";
+  } else if (minRestantes <= tMGal100p100 + 1) {
+    timeOutMG.innerHTML = "SUBIR 100%";  
+    timeOutMG.style.color = "black";
+  } else if (minRestantes <= tMGal100p100 + 1.5) {
+    timeOutMG.innerHTML = "subir 100%";  
+    timeOutMG.style.color = "black";
+  } else {
+    timeOutMG.innerHTML = "Ver Previsión";  
+    timeOutMG.style.color = "black";
+  }
+}
 
 // Conviente Carga en % a Potencia en MW
 function cargaMW(){
