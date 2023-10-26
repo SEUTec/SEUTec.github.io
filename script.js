@@ -86,9 +86,8 @@ function calcular(){
   // Tiempo Necesario para Subir desde potencia Actual al 100%
   const p100Subida = 40;  // % de Subida medidoa para referencia
   const tmpSubida = 7;    // tiempo que ha tadado en subir dicho porcentaje
-  const velSubidaT2 = p100Subida / tmpSubida; // %/min TESA2, los 2 MGs
-  const velSubidaMG = velSubidaT2 / 2;        // %/min 1 solo motor generador
-  
+  const velSubidaMG = p100Subida / tmpSubida;   // rampa subida %/min de los MGs
+    
   // Incremento de Carga para llegar al 100% en %
   let dCMG1 = (100 - potMG1p100);
   let dCMG2 = (100 - potMG2p100);
