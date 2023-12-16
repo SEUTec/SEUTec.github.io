@@ -40,7 +40,7 @@ function calcular(){
   
   potNominada = parseFloat(potNominada);
   if (potNominada < 0) { potNominada = 0; document.getElementById("inptPotNominada").value = potNominada.toFixed(2); }
-  if (potNominada > POT_TESA2_100x100) { potNominada = POT_TESA2_100x100; document.getElementById("inptPotNominada").value = potNominada;}
+  if (potNominada > POT_TESA2_100x100) { potNominada = POT_TESA2_100x100; document.getElementById("inptPotNominada").value = potNominada.toFixed(2);}
   
   energia = parseFloat(energia);
   if (energia < 0) { energia = 0; document.getElementById("inptEnergia").value = energia; }
@@ -71,15 +71,6 @@ function calcular(){
   let prevGeneraMG2 = potMG2 * minRestantes / 60;
   
   prevFinalTESA2 = energia * minutos / 60 + prevGeneraMG1 + prevGeneraMG2;
-  
-  let correcion;  // Declarar la variable global, no dentro del if, para poder utilizarla fuera.
-  if ( potNominada * 0.95 > prevFinalTESA2  ) { 
-    correccion = "SUBIR"; 
-    } else if ( potNominada * 1.05 < prevFinalTESA2 ) { 
-    correccion = "BAJAR"; 
-    } else { 
-    correccion = "MANTENER"; 
-  }
   
   document.getElementById("tempsRest").innerHTML = minRestantes.toFixed(2);  
   // Si comentem resultado y corrección a pot cte al HTML
@@ -113,6 +104,22 @@ function calcular(){
     prevGeneraMG1 + prevGeneraMG2 +
     potExtrSubidaMG1 + potExtrSubidaMG2;
 
+  let correcion;  // Declarar la variable global, no dentro del if, para poder utilizarla fuera.
+  //potNominada = 4;    // Per testar indicador de correció.
+  //prevFinalTESA2 = 4;
+  //console.log(potNominada);
+  //console.log(prevFinalTESA2);
+  errorAdmisibleP100 = 2;  // Error admisible en %
+  errorAdmisibleP1 = errorAdmisibleP100 / 100;
+  //console.log(errorAdmisibleP1);
+  if ( prevFinalTESA2 < potNominada * (1 - errorAdmisibleP1)) { 
+    correccion = "SUBIR";   // Si prev. menor que nominada -10%, Subir Potencia.
+    } else if ( prevFinalTESA2 > potNominada * (1 + errorAdmisibleP1)) { 
+      correccion = "BAJAR";   // Si prev. major que nominada +10%, Bajar Potencia.
+    } else { 
+      correccion = "MANTENER"; 
+  }
+  
   document.getElementById("resultado100").innerHTML = prevFinalTESA2.toFixed(2);
 
   document.getElementById("correccion100").innerHTML = correccion;
