@@ -115,6 +115,8 @@ function calcular(){
 
   document.getElementById("resultado100").innerHTML = prevFinalTESA2.toFixed(2);
 
+  document.getElementById("correccion100").innerHTML = correccion;
+
   document.getElementById("tMG1al100").innerHTML = tMG1al100p100.toFixed(1);
   const timeOutMG1 = document.getElementById("timeOutMG1");
   timeOutMssg(timeOutMG1, minRestantes, tMG1al100p100);
@@ -129,13 +131,13 @@ function timeOutMssg(timeOutMG, minRestantes, tMGal100p100){
     timeOutMG.innerHTML = "SUBIR 100%";  
     timeOutMG.style.color = "red";
   } else if (minRestantes <= tMGal100p100 + 0.5) {
-    timeOutMG.innerHTML = "SUBIR 100%";  
+    timeOutMG.innerHTML = "SUBIR 100% ?";  
     timeOutMG.style.color = "orange";
   } else if (minRestantes <= tMGal100p100 + 1) {
-    timeOutMG.innerHTML = "SUBIR 100%";  
+    timeOutMG.innerHTML = "SUBIR 100% ?";  
     timeOutMG.style.color = "black";
   } else if (minRestantes <= tMGal100p100 + 1.5) {
-    timeOutMG.innerHTML = "subir 100%";  
+    timeOutMG.innerHTML = "subir 100% ?";  
     timeOutMG.style.color = "black";
   } else {
     timeOutMG.innerHTML = "Ver Previsión";  
