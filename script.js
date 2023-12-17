@@ -1,13 +1,11 @@
-/*
-  Scripts Previsión Generación Ebergía Arranque TESA2
-*/
+// Java Script Previsión Generación Ebergía Arranque TESA2 
 
 const POT_TESA2_100x100 = 13.46;
 const POT_MG_100x100 = POT_TESA2_100x100 / 2;
 
 // Tiempo Necesario para Subir desde potencia Actual al 100%
 const p100Subida = 100;  // % de Subida medidoa para referencia
-const tmpSubida = 19;    // tiempo que ha tadado en subir dicho porcentaje en mimutos.
+const tmpSubida = 19;    // tiempo que ha tardado en subir el porcentaje indicado en mimutos.
 const velSubidaMG = p100Subida / tmpSubida;   // rampa subida %/min de los MGs
 
 showTime();  // Para que no tarde 1s en mostrarse la hora
