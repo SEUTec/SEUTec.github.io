@@ -147,6 +147,8 @@ function timeOutMssg2(timeOutMG, minRestantes, tMGal100p100){
   }
 }
 
+// Modificació js
+
 function timeOutMssg(timeOutMG, minRestantes, tMGal100p100){
   if (minRestantes <= tMGal100p100) {
     timeOutMG.innerHTML = "100% AHORA";  
