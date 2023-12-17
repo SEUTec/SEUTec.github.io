@@ -126,25 +126,39 @@ function calcular(){
 
   document.getElementById("tMG1al100").innerHTML = tMG1al100p100.toFixed(1);
   const timeOutMG1 = document.getElementById("timeOutMG1");
-  timeOutMssg(timeOutMG1, minRestantes, tMG1al100p100);
+  //timeOutMssg(timeOutMG1, minRestantes, tMG1al100p100);
+  timeOutMssg2(timeOutMG1, minRestantes, tMG1al100p100);
 
   document.getElementById("tMG2al100").innerHTML = tMG2al100p100.toFixed(1);
   const timeOutMG2 = document.getElementById("timeOutMG2");
-  timeOutMssg(timeOutMG2, minRestantes, tMG2al100p100);
+  //timeOutMssg(timeOutMG2, minRestantes, tMG2al100p100);
+  timeOutMssg2(timeOutMG2, minRestantes, tMG2al100p100);
+}
+
+function timeOutMssg2(timeOutMG, minRestantes, tMGal100p100){
+  //timeOutMG.innerHTML = "100% en " + (minRestantes - tMGal100p100).toFixed(1) + " min.";  
+  timeOutMG.innerHTML = (minRestantes - tMGal100p100).toFixed(1);  
+  if (minRestantes <= tMGal100p100) {
+    timeOutMG.style.color = "red";
+  } else if (minRestantes <= tMGal100p100 + 0.5) {
+    timeOutMG.style.color = "orange";
+  } else {
+    timeOutMG.style.color = "black";
+  }
 }
 
 function timeOutMssg(timeOutMG, minRestantes, tMGal100p100){
   if (minRestantes <= tMGal100p100) {
-    timeOutMG.innerHTML = "SUBIR 100%";  
+    timeOutMG.innerHTML = "100% AHORA";  
     timeOutMG.style.color = "red";
   } else if (minRestantes <= tMGal100p100 + 0.5) {
-    timeOutMG.innerHTML = "SUBIR 100% ?";  
+    timeOutMG.innerHTML = "100% en 30 s.";  
     timeOutMG.style.color = "orange";
   } else if (minRestantes <= tMGal100p100 + 1) {
-    timeOutMG.innerHTML = "SUBIR 100% ?";  
+    timeOutMG.innerHTML = "100% en 1 min.";  
     timeOutMG.style.color = "black";
   } else if (minRestantes <= tMGal100p100 + 1.5) {
-    timeOutMG.innerHTML = "subir 100% ?";  
+    timeOutMG.innerHTML = "100% en 1,5 min.";  
     timeOutMG.style.color = "black";
   } else {
     timeOutMG.innerHTML = "Ver Previsión";  
@@ -152,7 +166,7 @@ function timeOutMssg(timeOutMG, minRestantes, tMGal100p100){
   }
 }
 
-// Conviente Carga en % a Potencia en MW
+// Convierte Carga en % a Potencia en MW
 function cargaMW(){
   //alert("cargaMW");
   carga = document.getElementById("inptCarga").value;

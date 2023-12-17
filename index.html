@@ -53,11 +53,20 @@
       </fieldset>
       <!-- <button onclick="calcular()">Calcular</button> -->
       <fieldset>
-        <legend>Tiempos Subida Carga 100%</legend>
-        <label>MG1: <output id="tMG1al100">Indef.</output> min. 
-          <output id="timeOutMG1">Ver Previsión</output></label>
-        <br><label>MG2: <output id="tMG2al100">Indef.</output> min.
-          <output id="timeOutMG2">Ver Previsión</output></label>
+        <legend>Subir Carga al 100%</legend>
+        <!--
+        <label>MG1 100% en: <output id="timeOutMG1">0.0</output> min.</label>
+        <br><label>MG2 100% en: <output id="timeOutMG2">0.0</output> min.</label>
+        -->
+        
+        <label>MG1: (<output id="tMG1al100">00.0</output>), subir en:
+          <output id="timeOutMG1">Ver Previsión</output> min.
+        </label>
+        <br><label>MG2: (<output id="tMG2al100">00.0</output>), subir en: 
+          <output id="timeOutMG2"></output> min.
+        </label>
+        
+        
       </fieldset>
       <fieldset>
         <legend>Previsión Energía Generada Final Hora</legend>
